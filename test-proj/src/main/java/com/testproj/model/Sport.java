@@ -6,6 +6,9 @@ package com.testproj.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import lombok.Data;
 
 /**

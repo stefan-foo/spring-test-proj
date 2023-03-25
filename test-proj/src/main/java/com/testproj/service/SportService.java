@@ -14,4 +14,8 @@ import java.util.List;
 
 public interface SportService {    
     public List<Sport> getAllSports();
+    public Sport getSport(String code);
+    public void deleteSport(String code);
+    public Sport createSport(Sport sport);
+    public Sport updateSport(Sport sport);
 }
