@@ -18,4 +18,5 @@ public interface SportService {
     public void deleteSport(String code);
     public Sport createSport(Sport sport);
     public Sport updateSport(Sport sport);
+    public List<Sport> searchSportsByName(String query);
 }

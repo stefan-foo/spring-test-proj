@@ -21,7 +21,6 @@ import org.springframework.web.server.ResponseStatusException;
  */
 @Service
 public class SportServiceImp implements SportService {
-
     @Autowired
     private SportRepository sportRepository;
     
@@ -52,7 +51,7 @@ public class SportServiceImp implements SportService {
         } catch (ResponseStatusException e) {
             throw e;
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Sport delition failed");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Sport deletion failed");
         }
     }
 
@@ -70,14 +69,19 @@ public class SportServiceImp implements SportService {
         Optional<Sport> optionalSport = sportRepository.findById(updatedSport.getCode());
         
         if (optionalSport.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Sport with entered code already exists");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Sport does not exist");
         } 
         
         Sport sport = optionalSport.get();
-        sport.setName(updatedSport.getName());
-        sport.setSortOrder(updatedSport.getSortOrder());
+        sport.setName(updatedSport.getName())
+            .setSortOrder(updatedSport.getSortOrder());
         
         return sportRepository.save(sport);
+    }
+
+    @Override
+    public List<Sport> searchSportsByName(String query) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
